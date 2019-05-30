@@ -57,6 +57,7 @@ void dfs2(int v) {
 }
 
 signed main() {
+	cout << "Please input the size of the set on which your permutation act\n";
 	int n;
 	cin >> n;
 
@@ -68,12 +69,18 @@ signed main() {
 
 	used1.resize(n);
 	used2.resize(n);
+	cout << "Please input numbers to which 1,2,...,n go under the first permutation\n";
+	cout << "Sample: if you have permutation \n";
+	cout << "1   2   3   4   5  .... n \n";
+	cout << "a_1 a_2 a_3 a_4 a_5 ... a_n, \n \n";
+	cout << "then input: a_1 a_2 a_3 a_4 ... a_n \n";
 
 	for (int i = 0; i < n; i++) {
 		int a;
 		cin >> a;
 		g1[i].push_back(a - 1);
 	}
+	cout << "Please input numbers to which 1,2,...,n go under the second permutation\n";
 	for (int i = 0; i < n; i++) {
 		int a;
 		cin >> a;
@@ -96,7 +103,8 @@ signed main() {
 	}
 
 	if (pemrmutation1.size() != pemrmutation2.size()) {
-		cout << "types are different \n";
+		cout << "The permutations are not conjugate (";
+		cout << "i.e. their types are different) \n";
 		return 0;
 	}
 
@@ -105,7 +113,8 @@ signed main() {
 
 	for (int i = 0; i < pemrmutation1.size(); i++) {
 		if (pemrmutation1[i].size() != pemrmutation2[i].size()) {
-			cout << "types are different \n";
+			cout << "The permutations are not conjugate (";
+			cout << "the types of the two permutations are different) \n";
 			return 0;
 		}
 	}
@@ -119,7 +128,7 @@ signed main() {
 			ans2.push_back(pemrmutation2[i][j]);
 		}
 	}
-
+	cout << "Here is a conjugating permutation \n";
 	for (int i = 0; i < n; i++) {
 		cout << ans1[i] + 1 << " ";
 	}
@@ -127,4 +136,6 @@ signed main() {
 	for (int i = 0; i < n; i++) {
 		cout << ans2[i] + 1 << " ";
 	}
+
+	return 0;
 }
